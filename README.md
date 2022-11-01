@@ -1,4 +1,4 @@
-# decoracao_app
+# Decoriums_app
 
 Project build based on a Dribbble design.
 Original Project:
