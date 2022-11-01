@@ -4,17 +4,18 @@ import 'package:decoracao_app/pages/myOrders.dart';
 import 'package:decoracao_app/pages/productPage.dart';
 import 'package:decoracao_app/pages/settings.dart';
 import 'package:decoracao_app/pages/support.dart';
+import 'package:decoracao_app/widgets/globals.dart';
 import 'package:decoracao_app/widgets/side_menu_drawer.dart';
 import 'package:flutter/material.dart';
 
 class UserPage extends StatefulWidget{
-  const UserPage({super.key, required this.title});
+
+  const UserPage({super.key, required this.title,});
 
   final String title;
-  
 
   @override
-  State<UserPage> createState() => _userPageState();
+  State<UserPage> createState() => userPageState();
 
 }
 
@@ -97,10 +98,8 @@ class _FilledCardExampleState extends State<FilledCardExample> {
   }
 }
 
-class _userPageState extends State<UserPage> {
-  
-  int currentIndex = 0;
-  
+class userPageState extends State<UserPage> {
+
   List<Widget> pageList = [
     HomePage(title: 'Decoriums'),
     favoritePage(),
@@ -125,9 +124,7 @@ class _userPageState extends State<UserPage> {
           builder: (context) {
             return IconButton(
                 onPressed: () {
-                Scaffold.of(context).openDrawer();
-                // ScaffoldMessenger.of(context).showSnackBar(
-                // const SnackBar(content: Text('MENU'))); 
+                Scaffold.of(context).openDrawer(); 
               }, 
               icon: Padding(
                 padding: const EdgeInsets.only(top: 5.0),
@@ -179,7 +176,7 @@ class _userPageState extends State<UserPage> {
           
         ],
       ),
-        body:pageList.elementAt(currentIndex),
+        body:pageList.elementAt(currentIndex),       
         );
   }
 }

@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
                     shape: RoundedRectangleBorder(borderRadius: (BorderRadius.circular(20.0))),),
                   onPressed: () {
                                 ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('SEARCH')));
+                                   const SnackBar(content: Text('SEARCH')));
                   },
                   child: Row(
                     children: [

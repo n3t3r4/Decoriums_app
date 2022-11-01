@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   static const _kDuration = Duration(milliseconds: 600);
 
-    static const _kCurve = Curves.ease;
+  static const _kCurve = Curves.ease;
 
 
   final List<Widget> _pages = <Widget>[
@@ -203,6 +203,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       body: Center(
+        widthFactor: MediaQuery.of(context).size.width,
         child: Stack(
           children: <Widget> [
             PageView.builder(
@@ -234,10 +235,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.only(top: 500.0),
                 child: Center(
                   child: SizedBox(
-                    width: 300.0,
+                    width: MediaQuery.of(context).size.width - 100,
                     height: 45.0,
                     child: ElevatedButton(
-                      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage(title: "Decoriums")));}, 
+                      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage(title: "Decoriums",)));}, 
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black, 
                         backgroundColor: Colors.white,

@@ -31,7 +31,7 @@ class _productPageState extends State<ProductPage> {
         ),
         leading: IconButton(
             onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage(title: "Decoriums")));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage(title: "Decoriums",)));
           }, 
           icon: Padding(
             padding: const EdgeInsets.only(top: 5.0),
@@ -176,7 +176,7 @@ class _productPageState extends State<ProductPage> {
                                   });
                                 }, 
                                 shape: RoundedRectangleBorder(side: BorderSide(width: 3,color: Colors.white),borderRadius: BorderRadius.circular(100)),
-                                backgroundColor: Colors.brown,)),
+                                backgroundColor: Color.fromRGBO(75, 70, 72, 1),)),
                             ),
                         
                               Padding(
@@ -190,7 +190,7 @@ class _productPageState extends State<ProductPage> {
                                   });
                                 },
                                 shape: RoundedRectangleBorder(side: BorderSide(width: 3,color: Colors.white),borderRadius: BorderRadius.circular(100)),
-                                backgroundColor: Colors.blueGrey,)),  
+                                backgroundColor: Color.fromRGBO(153, 134, 136, 1),)),  
                               ),
                         
                               Padding(
@@ -204,7 +204,7 @@ class _productPageState extends State<ProductPage> {
                                   });
                                 }, 
                                 shape: RoundedRectangleBorder(side: BorderSide(width: 3,color: Colors.white),borderRadius: BorderRadius.circular(100)),
-                                backgroundColor: Colors.lightGreen,)),
+                                backgroundColor: Color.fromRGBO(88, 109, 95, 1),)),
                               ),
                           ],),
                         ),
