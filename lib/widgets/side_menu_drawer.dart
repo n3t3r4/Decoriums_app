@@ -16,8 +16,26 @@ class _sideMenuState extends State<sideMenu>{
 
   void changeIndex(int){
     currentIndex = int;
-    Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage(title: "Decoriums",)));
+    Navigator.of(context).push(_createRoute());
   }
+
+  Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const UserPage(title: 'Decoriums',),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(1.0, 0.0);
+      const end = Offset.zero;
+      const curve = Curves.slowMiddle;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
 
   final padding = EdgeInsets.symmetric(horizontal: 20);  
 
