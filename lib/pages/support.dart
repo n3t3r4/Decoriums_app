@@ -26,12 +26,12 @@ class _supportPage extends State<supportPage>{
     Message(text: 'Can you help me?', date: DateTime.now().subtract(const Duration(days: 10, minutes: 3)), isSentByMe: true),
     Message(text: 'Hello, how can I help you?', date: DateTime.now().subtract(const Duration(days: 10, minutes: 2)), isSentByMe: false),
     Message(text: 'Hi, I was looking for chairs', date: DateTime.now().subtract(const Duration(days: 5, minutes: 1)), isSentByMe: true),
-    Message(text: 'Sure, any color?', date: DateTime.now().subtract(const Duration(days: 3, minutes: 1)), isSentByMe: false),
+    Message(text: 'Sure, what color?', date: DateTime.now().subtract(const Duration(days: 3, minutes: 1)), isSentByMe: false),
 
     
   ].reversed.toList();
 
-  TextEditingController _messageController = TextEditingController();
+  final TextEditingController _messageController = TextEditingController();
 
   @override
   Widget build(BuildContext context){
@@ -60,7 +60,7 @@ class _supportPage extends State<supportPage>{
                       padding: const EdgeInsets.all(8), 
                       child: Text(
                         DateFormat.yMMMd().format(message.date),
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white, fontSize: 9),
                       ),
                     ),
                   ),
@@ -74,33 +74,43 @@ class _supportPage extends State<supportPage>{
                 child: Card(
                   elevation: 8,
                   child: Padding(
-                    padding: const EdgeInsets.all(12), 
+                    padding: const EdgeInsets.all(10), 
                     child: Text(message.text),),
                 ),
               ),
             ),
           ), 
-            Container(
-              
-              color: Colors.grey.shade300,
-              child: TextField(
-                controller: _messageController,
-                decoration: const InputDecoration(
-                  contentPadding: EdgeInsets.all(12),
-                  hintText: 'Type your message here...'
+           Padding(
+              padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+              child: SizedBox(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300, 
+                    borderRadius: BorderRadius.circular(50),),
+                  child: TextField(
+                    controller: _messageController,
+                    decoration: const InputDecoration(
+                      suffixIcon: IconButton(onPressed: null, icon: Icon(Icons.send)),
+                      contentPadding: EdgeInsets.all(12),
+                      hintText: 'Type your message here...'
+                    ),
+                    
+                    onSubmitted: (text) {
+
+                      
+                      final message = Message(
+                        text: text, 
+                        date: DateTime.now(), 
+                        isSentByMe: true,);
+
+                        setState(() => messages.add(message),);
+                        _messageController.clear();
+                    },
+                  ),
                 ),
-                onSubmitted: (text) {
-
-                  
-                  final message = Message(
-                    text: text, 
-                    date: DateTime.now(), 
-                    isSentByMe: true,);
-
-                    setState(() => messages.add(message),);
-                    _messageController.clear();
-                },
+                
               ),
+              
             ),
         ],
       )
