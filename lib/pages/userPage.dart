@@ -39,57 +39,62 @@ class _FilledCardExampleState extends State<FilledCardExample> {
     return Center(
       child: Padding(
         padding: const EdgeInsets.only(top: 40.0),
-        child: Card(
-          shape: RoundedRectangleBorder(borderRadius: (BorderRadius.circular(23.0))),
-          elevation: 0,
-          color: Color.fromARGB(255, 218, 218, 218),
-          child: SizedBox(         
-            width: 200,
-            height: 340,
-            child: Column(
-              children: [
-                SizedBox(
-                  child: Transform.scale(
-                    scale: 1.50,
-                    child: Image.asset(widget.cardImage + '_grey.png'))),
-                const SizedBox(height: 60.0,),
-                Container(
-                  width: 200,
-                  height: 80,
-                  decoration: BoxDecoration(
-                  color: Colors.black87, 
-                  borderRadius: BorderRadius.circular(23.0)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Office', style: TextStyle(color: Colors.grey, fontSize: 10.0),),
-                            Text(widget.cardTitle, style: TextStyle(color: Colors.white),),
-                            const SizedBox(height: 10.0,),
-                            Text(widget.cardPrice, style: TextStyle(color: Colors.white),),
-                           
-                          ],
-                        ),
-                       Padding(
-                         padding: const EdgeInsets.only(left: 14.0, top: 15.0),
-                         child: CircleAvatar(
-                           radius: 30,
-                           backgroundColor: Colors.white,
-                           child: IconButton(onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductPage(cardTitle: widget.cardTitle, cardPrice: widget.cardPrice, cardImage: widget.cardImage,)));
-                           }, icon: const Icon(Icons.shopping_bag_outlined, color: Colors.black87),),
-                         ),
-                       )
-                      ],
-                    ),
-                  ), 
-
-                ),
-              ],
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductPage(cardTitle: widget.cardTitle, cardPrice: widget.cardPrice, cardImage: widget.cardImage,)));
+          },
+          child: Card(
+            shape: RoundedRectangleBorder(borderRadius: (BorderRadius.circular(23.0))),
+            elevation: 0,
+            color: Color.fromARGB(255, 218, 218, 218),
+            child: SizedBox(         
+              width: 200,
+              height: 340,
+              child: Column(
+                children: [
+                  SizedBox(
+                    child: Transform.scale(
+                      scale: 1.50,
+                      child: Image.asset(widget.cardImage + '_grey.png'))),
+                  const SizedBox(height: 60.0,),
+                  Container(
+                    width: 200,
+                    height: 80,
+                    decoration: BoxDecoration(
+                    color: Colors.black87, 
+                    borderRadius: BorderRadius.circular(23.0)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Office', style: TextStyle(color: Colors.grey, fontSize: 10.0),),
+                              Text(widget.cardTitle, style: TextStyle(color: Colors.white),),
+                              const SizedBox(height: 10.0,),
+                              Text(widget.cardPrice, style: TextStyle(color: Colors.white),),
+                             
+                            ],
+                          ),
+                         Padding(
+                           padding: const EdgeInsets.only(left: 14.0, top: 15.0),
+                           child: CircleAvatar(
+                             radius: 30,
+                             backgroundColor: Colors.white,
+                             child: IconButton(onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ProductPage(cardTitle: widget.cardTitle, cardPrice: widget.cardPrice, cardImage: widget.cardImage,)));
+                             }, icon: const Icon(Icons.shopping_bag_outlined, color: Colors.black87),),
+                           ),
+                         )
+                        ],
+                      ),
+                    ), 
+        
+                  ),
+                ],
+              ),
             ),
           ),
         ),
