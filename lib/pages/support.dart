@@ -33,6 +33,18 @@ class _supportPage extends State<supportPage>{
 
   final TextEditingController _messageController = TextEditingController();
 
+  void _sendMessage(text) {
+    _messageController.text = text;
+
+    final message = Message(
+      text: text, 
+      date: DateTime.now(), 
+      isSentByMe: true,);
+
+      setState(() => messages.add(message),);
+      _messageController.clear();
+  }
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -89,22 +101,19 @@ class _supportPage extends State<supportPage>{
                     borderRadius: BorderRadius.circular(50),),
                   child: TextField(
                     controller: _messageController,
-                    decoration: const InputDecoration(
-                      suffixIcon: IconButton(onPressed: null, icon: Icon(Icons.send)),
+                    decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.send),
+                        onPressed: () {
+                           _sendMessage(_messageController.text); 
+                           FocusManager.instance.primaryFocus?.unfocus(); 
+                           },
+                          ),
                       contentPadding: EdgeInsets.all(12),
                       hintText: 'Type your message here...'
                     ),
-                    
                     onSubmitted: (text) {
-
-                      
-                      final message = Message(
-                        text: text, 
-                        date: DateTime.now(), 
-                        isSentByMe: true,);
-
-                        setState(() => messages.add(message),);
-                        _messageController.clear();
+                      _sendMessage(text);
                     },
                   ),
                 ),

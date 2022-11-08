@@ -1,4 +1,5 @@
 import 'package:decoracao_app/pages/userPage.dart';
+import 'package:decoracao_app/widgets/globals.dart';
 import 'package:flutter/material.dart';
 
 class settingsPage extends StatefulWidget{
