@@ -93,7 +93,7 @@ class _supportPage extends State<supportPage>{
             ),
           ), 
            Padding(
-              padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+              padding: const EdgeInsets.only(top: 8.0, left: 17.0, right: 17.0),
               child: SizedBox(
                 child: Container(
                   decoration: BoxDecoration(
